@@ -1,0 +1,792 @@
+   <!DOCTYPE html>
+<html>
+
+     <style>
+html{
+}
+.leaflet-default-icon-path {
+    background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png);
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../static/background.jpg");
+    background-size: cover;
+
+
+
+}
+.container div label{
+    cursor: pointer;
+}
+.wrap{
+    width: auto;
+
+
+}
+.wrap2{
+    width: auto;
+
+
+}
+.container2{
+    display: flex;
+
+    size: 50px;
+    font-size: 22px;
+      justify-content: center;
+      font-weight: bold;
+
+
+}
+
+.container2 label{
+    margin: 10px;
+
+
+}
+
+
+.container2 input{
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+
+}
+
+.form{
+     text-align: center !important ;
+
+}
+.form input{
+    text-align:center;
+    font-weight: bold;
+
+    margin:5px;
+    width: 200px;
+    border: none;
+    padding: 20px;
+    font-size: 1em;
+    outline: none;
+    margin-bottom: 5px;
+    background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.1);
+    border-radius: 10px;
+    box-sizing: border-box;
+    -webkit-transition: all 0.5s ;
+	-moz-transition: all 0.5s ;
+	-ms-transition: all 0.5s ;
+	-o-transition: all 0.5s ;
+	transition: all 0.5s ;
+
+}
+::placeholder {
+  color: #000000;
+  opacity: 1;
+    font-weight: bold;
+}
+.container{
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    width: 1063px;
+    background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.3);
+  color: #000000;
+    padding: 15px;
+    border-radius: 10px;
+        box-shadow:0 2px 20px #000000;
+
+
+
+}.form input:focus{
+    background: rgba(255, 255, 255, 0.1);;
+}
+
+
+
+.button {
+    width: 100%;
+    margin-top: 10px;
+  border: none;
+  color: #444444;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+    border-radius: 10px;
+    background: #ddd;
+
+
+}
+.predict:hover {
+  background: linear-gradient(to right, #76f7ee, #267091);
+  color: white;
+    box-shadow:0 2px 20px #ffffff;
+
+}
+
+.hidden {
+  display: none;
+}
+
+.container2 label input[type = "checkbox"]{
+    display: none;
+
+}
+
+.container2 label span{
+
+    position: relative;
+    display: inline-block;
+    background-color: rgb(0,0,0);
+   background-color: rgba(0,0,0, 0.1);
+    padding : 15px 30px;
+    color: #000000;
+    border-radius: 30px ;
+    font-size: 20px;
+    user-select: none;
+    overflow: hidden;
+    font-weight: bold;
+
+}
+
+
+
+.container2 label input[type = "checkbox"]:checked ~ span {
+
+    background: linear-gradient(to right, #76f7ee, #267091);
+    box-shadow:0 2px 20px #ffffff;
+
+}
+
+
+.container2 label input[type = "checkbox"]:hover ~ span {
+      transition-duration: 0.4s;
+
+    background: linear-gradient(to right, #76f7ee, #267091);
+    color: #fff;
+                box-shadow:0 2px 20px #ffffff;
+
+}
+
+.predict:hover {
+  background: linear-gradient(to right, #76f7ee, #267091);
+  color: white;
+    box-shadow:0 2px 20px #ffffff;
+
+}
+.predict {
+    margin-top: 20px;
+    background-color: rgb(0,0,0);
+     background-color: rgba(0,0,0, 0.2);
+    color: white;
+    font-weight: bold;
+}
+
+.form2{
+     text-align: center ;
+
+}
+
+
+
+.tab {
+    margin: 10px;
+  overflow: hidden;
+background-color: rgb(0,0,0);
+     background-color: rgba(0,0,0, 0.2);
+    border-radius: 15px ;
+
+    box-shadow:0 2px 20px #ffffff;
+
+}
+.tab button {
+
+      transition-duration: 0.4s;
+
+  width: 50%;
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+        color: white;
+
+
+}
+
+.tab button:hover {
+
+background: linear-gradient(to right, #76f7ee, #267091);
+  color: white;
+    box-shadow:0 2px 20px #ffffff;}
+.tab button.active {
+  background: linear-gradient(to right, #76f7ee, #267091);
+    box-shadow:0 2px 20px #ffffff;
+}
+
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+
+      transition-duration: 0.4s;
+
+    background-color: rgb(0,0,0);
+     background-color: rgba(0,0,0, 0.2);
+
+  content: 'Upload Excel';
+  color: black;
+  display: inline-block;
+  border-radius: 10px;
+  padding:  20px;
+  outline: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 15pt;
+    text-align: center;
+    justify-content: center;
+}
+.custom-file-input {
+margin-bottom: 10px;
+  color: transparent;
+justify-content: center;
+text-align: center;
+margin-left:100px ;
+}
+.custom-file-input:hover::before {
+background: linear-gradient(to right, #76f7ee, #267091);
+  color: white;
+  }
+.custom-file-input:active {
+  outline: 0;
+}
+
+#map{
+    margin-top: 30px;
+    width: 100%;
+    height: 600px;
+    border-radius: 10px;
+}
+     #map2{
+    width: 100%;
+    height: 600px;
+    border-radius: 10px;
+}
+     </style>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+
+ <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+
+    <div class="container">
+ <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'valeur')" id="defaultOpen">Valeur Unique</button>
+        <button class="tablinks" onclick="openCity(event, 'excel')" id="link3">Excel</button>
+      </div>
+        <div id="valeur" class="tabcontent">
+    <div class="wrap">
+        <form id="features-form" method="post" class="form" >
+            <div class="container2">
+
+                <label for="temp">
+                <input type="checkbox" id="temp" value="1" name="check">
+                <span>Temperature</span>
+                </label>
+
+                <label for="phspht"><input type="checkbox" id="phspht" value="4" name="check">
+                <span>Phosphate</span>
+                </label>
+
+                 <label for="nit"><input type="checkbox" id="nit" value="5" name="check">
+                <span>Nitrate</span>
+                </label>
+                <label for="tcarb"><input type="checkbox" id="tcarb" value="2" name="check">
+                <span>TCarbone</span>
+                </label>
+                <label for="silc"><input type="checkbox" id="silc" value="3" name="check">
+                <span>Silicate</span>
+                </label>
+
+            </div>
+            <input type="text" id="latitude" placeholder="Latitude">
+            <input type="text" id="longitude" placeholder="Longitude">
+            <input type="text" id="depth" placeholder="Depth">
+            <input type="text" id="temperature" placeholder="Temperature" name="tmp">
+            <input type="text" id="phosphate" placeholder="Phosphate" name="tmp">
+            <input type="text" id="nitrate" placeholder="Nitrate" name="tmp">
+            <input type="text" id="tcarbone" placeholder="Tcarbone" name="tmp">
+            <input type="text" id="silicate" placeholder="Silicate" name="tmp">
+
+             <div id="map"></div>
+            <button type="submit" class="button predict"  id="predict" value="Submit">Predict</button>
+
+        </form>
+
+    </div>
+
+
+</div>
+
+        <div id="excel" class="tabcontent">
+
+    <div class="wrap2">
+
+        <form id="features-form2"  method="post" class="form2" >
+                      <div class="container2">
+
+                <label for="temp2">
+                <input type="checkbox" id="temp2" value="1" name="check">
+                <span>Temperature</span>
+                </label>
+
+                <label for="phspht2"><input type="checkbox" id="phspht2" value="4" name="check">
+                <span>Phosphate</span>
+                </label>
+
+                 <label for="nit2"><input type="checkbox" id="nit2" value="5" name="check">
+                <span>Nitrate</span>
+                </label>
+                <label for="tcarb2"><input type="checkbox" id="tcarb2" value="2" name="check">
+                <span>TCarbone</span>
+                </label>
+                <label for="silc2"><input type="checkbox" id="silc2" value="3" name="check">
+                <span>Silicate</span>
+                </label>
+
+
+
+            </div>
+
+                <p><input type=file  name=file_upload class="custom-file-input" id="file">
+
+<div id="map2"></div>
+            <button  type="submit" class="button predict" id="predict2" value="Submit" >Predict</button>
+        </form>
+
+
+
+    </div>
+
+    </div>
+
+     <script>
+
+
+ document.getElementById("features-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // prevent form from submitting
+     const tmpcheck=document.getElementById("temp");
+     const phsphtcheck=document.getElementById("phspht");
+     const nitcheck=document.getElementById("nit");
+     const tcarbcheck=document.getElementById("tcarb");
+     const silccheck=document.getElementById("silc");
+
+    let dict={}
+     var input1=document.getElementById("temp");
+     var input2=document.getElementById("phspht");
+     var input3=document.getElementById("nit");
+     var input4=document.getElementById("tcarb");
+     var input5=document.getElementById("silc");
+
+
+
+if (tmpcheck.checked) {
+      document.cookie = "myCheckbox=checked; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+    }
+if (phsphtcheck.checked) {
+      document.cookie = "myCheckbox2=checked; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+    }
+if (silccheck.checked) {
+      document.cookie = "myCheckbox3=checked; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+    }
+if (tcarbcheck.checked) {
+      document.cookie = "myCheckbox4=checked; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+    }
+if (nitcheck.checked) {
+      document.cookie = "myCheckbox5=checked; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+    }
+
+     if (input1.checked == true){
+         var input1=document.getElementById("temp").value;
+         var tmp = document.getElementById("temperature").value;
+         let obj1={tmp:tmp}
+         Object.assign(dict,obj1)
+
+
+
+     }
+     if (input2.checked == true){
+         var input2=document.getElementById("phspht").value;
+         var phspht = document.getElementById("phosphate").value;
+         let obj2={phspht:phspht}
+         Object.assign(dict,obj2)
+
+
+
+     }
+     if (input3.checked == true){
+         var input3=document.getElementById("nit").value;
+         var nit = document.getElementById("nitrate").value;
+         let obj3={nit:nit}
+         Object.assign(dict,obj3)
+
+
+     }
+     if (input4.checked == true){
+         var input4=document.getElementById("tcarb").value;
+         var tcarb = document.getElementById("tcarbone").value;
+         let obj4={tcarb:tcarb}
+         Object.assign(dict,obj4)
+
+
+     }
+     if (input5.checked == true){
+         var input5=document.getElementById("silc").value;
+         var silc = document.getElementById("silicate").value;
+         let obj5={silc:silc}
+         Object.assign(dict,obj5)
+
+
+     }
+     Object.assign(dict,{input1: input1,input2: input2,input3: input3,input4: input4,input5: input5})
+
+
+     console.log(dict);
+
+
+     // Use fetch to send the form data to the server
+    fetch('/predict', {
+      method: 'POST',
+      body: JSON.stringify(dict),
+
+      headers: {'Content-Type': 'application/json'}
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        // Update the form with the returned result
+        var latitude = document.getElementById("latitude").value;
+    var longitude = document.getElementById("longitude").value;
+    var depth = document.getElementById("depth").value;
+    console.log(typeof latitude);
+    if (marker !== null) {
+      map.removeLayer(marker);
+    }
+    marker = L.marker([latitude, longitude]).addTo(map).bindPopup("<b>Longitude</b>"+" : "+ longitude + "<br>"+
+        "<b>Latitude</b>"+" : "+ latitude + "<br>"+
+        "<b>Depth</b>"+" : "+ depth + "<br>"+
+        "<b>PH</b>" + " : " + data.predict)
+    .openPopup();
+
+   document.getElementById("features-form").reset();
+
+if (document.cookie.indexOf("myCheckbox=checked") !== -1) {
+    // Set the checkbox to checked
+    tmpcheck.checked = true;
+    document.cookie = "myCheckbox=unchecked; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  }
+if (document.cookie.indexOf("myCheckbox2=checked") !== -1) {
+    // Set the checkbox to checked
+    phsphtcheck.checked = true;
+    document.cookie = "myCheckbox2=unchecked; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+
+  }
+if (document.cookie.indexOf("myCheckbox3=checked") !== -1) {
+    // Set the checkbox to checked
+    silccheck.checked = true;
+    document.cookie = "myCheckbox3=unchecked; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  }
+if (document.cookie.indexOf("myCheckbox4=checked") !== -1) {
+    // Set the checkbox to checked
+    tcarbcheck.checked = true;
+    document.cookie = "myCheckbox4=unchecked; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  }
+if (document.cookie.indexOf("myCheckbox5=checked") !== -1) {
+    // Set the checkbox to checked
+    nitcheck.checked = true;
+    document.cookie = "myCheckbox5=unchecked; expires=Fri, 31 Dec 9999 23:59:59 GMT";
+  }
+    });
+  });
+
+
+document.getElementById("features-form2").addEventListener("submit", function(event) {
+    event.preventDefault(); // prevent form from submitting
+    var fileInput = document.getElementById("file");
+    var file = fileInput.files[0];
+    var formData = new FormData();
+    formData.append("file_upload", file);
+     var input1=document.getElementById("temp2");
+     var input2=document.getElementById("phspht2");
+     var input3=document.getElementById("nit2");
+     var input4=document.getElementById("tcarb2");
+     var input5=document.getElementById("silc2");
+
+       if (input1.checked == true){
+         var input1=document.getElementById("temp2").value;
+
+
+     }
+     if (input2.checked == true){
+         var input2=document.getElementById("phspht2").value;
+
+
+
+     }
+     if (input3.checked == true){
+         var input3=document.getElementById("nit2").value;
+
+
+     }
+     if (input4.checked == true){
+         var input4=document.getElementById("tcarb2").value;
+
+
+     }
+     if (input5.checked == true){
+         var input5=document.getElementById("silc2").value;
+
+
+     }
+    const dict={input1: input1,input2: input2,input3: input3,input4: input4,input5: input5}
+    console.log(dict)
+    formData.append("variables", JSON.stringify(dict));
+
+    // Use fetch to send the form data to the server
+    fetch('/predict2', {
+      method: 'POST',
+      body: formData,
+
+    })
+    .then(response => response.json())
+    .then(data => {
+        const link = document.createElement("a");
+        link.href = data.download_url;
+        link.download = "data.csv";
+        document.body.appendChild(link);
+        console.log(link)
+        link.click();
+        link.remove();
+        var latitude = data.lat;
+       var longitude = data.long;
+       var depth = data.depth
+       var  ph=data.ph;
+       var date=data.date
+    console.log(latitude);
+        console.log(longitude);
+
+    if (marker !== null) {
+      map2.removeLayer(marker);
+    }
+
+    for (var i = 0; i < latitude.length; i++) {
+        var phh = parseFloat(ph[i]);
+        console.log(typeof phh)
+  marker = new L.marker([latitude[i], longitude[i]])
+      .bindPopup("<b>Date</b>"+" : "+ date[i] + "<br>"+"<b>Longitude</b>"+" : "+ longitude[i] + "<br>"+
+        "<b>Latitude</b>"+" : "+ latitude[i] + "<br>"+
+        "<b>Depth</b>"+" : "+ depth[i] + "<br>"+
+        "<b>PH</b>" + " : " + phh)
+    .addTo(map2);
+}
+
+
+    });
+  });
+
+
+
+
+
+
+
+         document.getElementById("defaultOpen").click();
+
+let mapOptions = {
+  center: [33.7243396617476, -40.64062714576721],
+  zoom: 2.2,
+  minZoom:2.2,
+    attribution: 'World Map',
+worldCopyJump : false,
+   maxBounds : [[-90, -180],[90, 180]]
+};
+
+
+let map = new L.map('map', mapOptions);
+let map2 = new L.map('map2', mapOptions);
+
+let layer = new L.TileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    }).addTo(map);
+
+let layer2 = new L.TileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    }).addTo(map2);
+async function isMarkerOnSea(lat, lng) {
+  const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=en`);
+  const data = await response.json();
+  // Check if the first result returned by the API is a sea or ocean
+  console.log(data.error=="Unable to geocode");
+    console.log(data);
+
+  return data.error=="Unable to geocode" ;
+}
+
+let marker = null;
+
+ //map
+ var submitButton = document.getElementById("predict");
+
+
+function pred(a) {
+
+    var latitude = document.getElementById("latitude").value;
+    var longitude = document.getElementById("longitude").value;
+    console.log(typeof latitude);
+    if (marker !== null) {
+      map.removeLayer(marker);
+    }
+var locations = [
+  ["LOCATION_1", 11.8166, 70],
+  ["LOCATION_2", 11.9804, 10],
+  ["LOCATION_3", 10.7202, 50],
+  ["LOCATION_4", 11.3889, 20],
+  ["LOCATION_5", 10.5929, 90]
+];
+
+
+for (var i = 0; i < locations.length; i++) {
+  marker = new L.marker([locations[i][1], locations[i][2]])
+    .bindPopup(a)
+    .addTo(map);
+}
+
+        marker = L.marker([latitude, longitude]).addTo(map).bindPopup(a)
+    .openPopup();
+
+   document.getElementById("features-form").reset();
+
+}
+
+
+map.on('click', async (event) => {
+  if (await isMarkerOnSea(event.latlng.lat, event.latlng.lng)) {
+    if (marker !== null) {
+      map.removeLayer(marker);
+    }
+    marker = L.marker([event.latlng.lat, event.latlng.lng]);
+    marker.bindTooltip("My Label", {permanent: true, className: "my-label", offset: [0, 0] });
+
+            marker.addTo(map);
+    document.getElementById('latitude').value = event.latlng.lat;
+     document.getElementById('longitude').value = event.latlng.lng;
+
+  } else {
+    alert('The marker must be placed on sea');
+  }
+});
+
+            function openCity(evt, data) {
+                setTimeout(function () {
+   window.dispatchEvent(new Event("resize"));
+}, 50);
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(data).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+
+
+const tempcheckbox = document.getElementById('temp');
+const tempbox = document.getElementById('temperature');
+    tempbox.classList.add('hidden');
+
+tempcheckbox.addEventListener('click', function handleClick() {
+  if (tempcheckbox.checked) {
+    tempbox.classList.remove('hidden');
+
+  } else {
+    tempbox.classList.add('hidden');
+
+  }
+});
+
+
+const phsphtcheckbox = document.getElementById('phspht');
+const phsphtbox = document.getElementById('phosphate');
+    phsphtbox.classList.add('hidden');
+
+phsphtcheckbox.addEventListener('click', function handleClick() {
+  if (phsphtcheckbox.checked) {
+        phsphtbox.classList.remove('hidden');
+
+  } else {
+    phsphtbox.classList.add('hidden');
+  }
+});
+
+
+const nitcheckbox = document.getElementById('nit');
+const nitbox = document.getElementById('nitrate');
+    nitbox.classList.add('hidden');
+
+nitcheckbox.addEventListener('click', function handleClick() {
+  if (nitcheckbox.checked) {
+        nitbox.classList.remove('hidden');
+
+  } else {
+    nitbox.classList.add('hidden');
+  }
+});
+
+const tcarbcheckbox = document.getElementById('tcarb');
+const tcarbbox = document.getElementById('tcarbone');
+    tcarbbox.classList.add('hidden');
+
+tcarbcheckbox.addEventListener('click', function handleClick() {
+  if (tcarbcheckbox.checked) {
+        tcarbbox.classList.remove('hidden');
+
+  } else {
+    tcarbbox.classList.add('hidden');
+  }
+});
+const silccheckbox = document.getElementById('silc');
+const silcbox = document.getElementById('silicate');
+    silcbox.classList.add('hidden');
+
+silccheckbox.addEventListener('click', function handleClick() {
+  if (silccheckbox.checked) {
+        silcbox.classList.remove('hidden');
+
+  } else {
+    silcbox.classList.add('hidden');
+  }
+});
+
+
+   </script>
+
+                 </div>
+
+</html>
